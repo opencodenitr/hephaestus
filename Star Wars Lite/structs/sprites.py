@@ -4,7 +4,7 @@ WIDTH, HEIGHT = 750, 750
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # images of enemy ships
-ENEMY0 = pygame.image.load(r"assets\enemy0.png")
+ENEMY0 = pygame.image.load(r"assets\enemy1.png")
 ENEMY1 = pygame.image.load(r"assets\enemy2.png")
 ENEMY3 = pygame.image.load(r"assets\enemy3.png")
 

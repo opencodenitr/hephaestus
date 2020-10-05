@@ -40,7 +40,7 @@ This repository will contain small automation/crazy/fun projects made using Pyth
 
 2. Inside the virtual environment, install the dependencies and libraries for each project using the requirements.txt file available in the project directories. To install the dependencies use the following in the terminal
 
-    `python -m pip install requirements.txt`
+    `python -m pip install -r requirements.txt`
 
 3. The project can be run directly via any text editor using main.py file present in the project directories. To run the project via terminal, use the following command.
 

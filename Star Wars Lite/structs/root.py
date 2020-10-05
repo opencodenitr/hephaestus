@@ -101,6 +101,8 @@ def main():
             player.posy += player_velocity
         if keys[pygame.K_SPACE]:
             player.shoot()
+        if keys[pygame.K_ESCAPE]:
+            main()
 
         for enemy in enemies[:]:
             enemy.move(enemy_velocity)

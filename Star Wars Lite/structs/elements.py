@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import os
 import sys
 
@@ -89,6 +90,8 @@ class Player(Shuttle):
             else:
                 for obj in objs:
                     if laser.collision(obj):
+                        collision_sound = mixer.Sound(r"sounds\explosion.wav")
+                        collision_sound.play()
                         objs.remove(obj)
                         if laser in self.lasers:
                             self.lasers.remove(laser)

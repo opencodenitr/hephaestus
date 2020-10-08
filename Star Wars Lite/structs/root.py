@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import random
 import os
 import sys
@@ -18,8 +19,8 @@ def main():
 
     enemies = []
     wave_length = 5
-    enemy_velocity, player_velocity = 2, 5
-    laser_velocity = 8
+    enemy_velocity, player_velocity = 1, 4
+    laser_velocity = 6
 
     player = elements.Player(300, 630)
 
@@ -27,6 +28,9 @@ def main():
 
     deaths = False
     deaths_count = 0
+
+    mixer.music.load(r"sounds\main_music.mp3")
+    mixer.music.play(-1)
 
     def redraw():
         sprites.WINDOW.blit(sprites.BACKGROUND, (0, 0))
@@ -45,6 +49,7 @@ def main():
         player.draw(sprites.WINDOW)
 
         if deaths:
+            mixer.music.fadeout(750)
             deaths_label = deaths_font.render(
                 "The Imperial Fleet has defeated you!!", 1, (255, 255, 255)
             )
@@ -100,9 +105,13 @@ def main():
         ):  # down
             player.posy += player_velocity
         if keys[pygame.K_SPACE]:
+            player_laser_sound = mixer.Sound(r"sounds\player_laser.wav")
+            player_laser_sound.play()
             player.shoot()
         if keys[pygame.K_ESCAPE]:
             main()
+
+        collision_sound = mixer.Sound(r"sounds\explosion.wav")
 
         for enemy in enemies[:]:
             enemy.move(enemy_velocity)
@@ -112,7 +121,8 @@ def main():
                 enemy.shoot()
 
             if elements.object_collision(enemy, player):
-                player.health -= 10
+                player.health -= 5
+                collision_sound.play()
                 enemies.remove(enemy)
             elif enemy.posy + enemy.get_height() > sprites.HEIGHT:
                 lives -= 1

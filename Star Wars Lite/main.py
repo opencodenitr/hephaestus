@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import os
 import time
 import random
@@ -8,6 +9,7 @@ from structs import elements, root, sprites
 warnings.filterwarnings("ignore")
 
 pygame.font.init()
+mixer.init()
 pygame.display.set_caption("Star Wars Lite")
 
 

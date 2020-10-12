@@ -34,6 +34,8 @@ def main():
                 root.main()
 
     pygame.quit()
+click = False
+
 
 def game_menu():
     title_font = pygame.font.Font(r"fonts\Starjedi.ttf", 40)
@@ -53,14 +55,19 @@ def game_menu():
         quit_text = menu_font.render("Play", 1, (255, 255, 0))
 
 
+        mx, my = pygame.mouse.get_pos()
+
+        if play_button_rect.collidepoint((mx,my)):
+            if click:
+                root.main()
+
 
         sprites.WINDOW.blit(title_text, (sprites.WIDTH / 2 - title_text.get_width() / 2, 30))
-
         sprites.WINDOW.blit(play_button, play_button_rect)
-
         pygame.display.update()
 
         # quits on escape
+        click = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -69,10 +76,12 @@ def game_menu():
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
         pygame.display.update()
         mainClock.tick(60)
-
-
 
 if __name__ == "__main__":
     game_menu()

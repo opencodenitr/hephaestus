@@ -1,6 +1,7 @@
 import pygame
 from pygame import mixer
 import random
+import main
 import os
 import sys
 
@@ -10,7 +11,7 @@ from structs import sprites
 from structs import elements
 
 
-def main():
+def game():
     run = True
     FPS = 60
     wave, lives = 0, 5
@@ -29,12 +30,8 @@ def main():
     deaths = False
     deaths_count = 0
 
-    mixer.music.load(r"sounds\main_music.mp3")
-    mixer.music.play(-1)
-
     def redraw():
         sprites.WINDOW.blit(sprites.BACKGROUND, (0, 0))
-        # draw text
         lives_label = main_font.render(f"Lives: {lives}", 1, (255, 255, 0))
         wave_label = main_font.render(f"wave: {wave}", 1, (255, 255, 0))
 
@@ -109,7 +106,7 @@ def main():
             player_laser_sound.play()
             player.shoot()
         if keys[pygame.K_ESCAPE]:
-            main()
+            main.game_menu()
 
         collision_sound = mixer.Sound(r"sounds\explosion.wav")
 
@@ -129,3 +126,39 @@ def main():
                 enemies.remove(enemy)
 
         player.fire_lasers(-laser_velocity, enemies)
+
+
+def options():
+    title_font = pygame.font.Font(r"fonts\Starjedi.ttf", 60)
+    menu_font = pygame.font.Font(r"fonts\Starjedi.ttf", 40)
+    run = True
+
+    while run:
+        sprites.WINDOW.blit(sprites.BACKGROUND, (0, 0))
+        # draw text on a new surface, 'text', antialias, color, background
+        title_text = title_font.render("options", 1, (255, 255, 0))
+
+        menu_text = menu_font.render("toggle sound", 1, (255, 255, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        sprites.WINDOW.blit(title_text, (sprites.WIDTH / 2 - title_text.get_width() / 2, 30))
+
+        sound_on_btn = elements.button('assets\menu\sound-on-active.png', 'assets\menu\sound-on-inactive.png', 250, "soundon")
+        sound_off_btn = elements.button('assets\menu\sound-off-active.png', 'assets\menu\sound-off-inactive.png', 310,"soundoff")
+        back_btn = elements.button(r'assets\menu\back-active.png', r'assets\menu\back-inactive.png', 485,"back")
+
+        pygame.display.update()
+        pygame.time.Clock().tick(60)
+
+    pygame.quit()

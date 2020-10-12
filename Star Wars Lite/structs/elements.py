@@ -1,7 +1,8 @@
-import pygame
+import pygame, sys
 from pygame import mixer
 import os
-import sys
+import main
+from structs import root
 
 sys.path.append(os.getcwd())
 from structs import sprites
@@ -145,8 +146,42 @@ class Enemy(Shuttle):
             self.lasers.append(laser)
             self.rest_timer = 1
 
-
 def object_collision(obj1, obj2):
     offset_x = obj2.posx - obj1.posx
     offset_y = obj2.posy - obj1.posy
     return obj1.mask.overlap(obj2.mask, (offset_x, offset_y)) != None
+
+def button(active,inactive,get_top,action=None):
+    
+    click = pygame.mouse.get_pressed()
+    music_paused = False
+
+    mx, my = pygame.mouse.get_pos()
+    display = pygame.image.load(inactive).convert_alpha()
+    display_rect = display.get_rect(center=sprites.WINDOW.get_rect().center, top=get_top)
+
+    if display_rect.collidepoint((mx, my)):
+        display = pygame.image.load(active).convert_alpha()
+        if click[0] == 1 and action != None:
+            if action == 'play':
+                root.game()
+            elif action == 'options':
+                root.options()
+            elif action == 'exit':
+                pygame.quit()
+                quit()
+            elif action == 'back':
+                main.game_menu()
+            elif action == 'soundon':
+                if mixer.music.play(-1) == False:
+                    mixer.music.play(-1)
+            elif action == 'soundoff':
+                if not music_paused:
+                    pygame.mixer.music.pause()
+                    music_paused = True
+                else:
+                    pygame.mixer.music.unpause()
+    else:
+        display = pygame.image.load(inactive).convert_alpha()
+
+    sprites.WINDOW.blit(display, display_rect)

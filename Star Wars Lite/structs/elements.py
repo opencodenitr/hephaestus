@@ -4,6 +4,7 @@ import os
 import main
 from structs import root
 
+
 sys.path.append(os.getcwd())
 from structs import sprites
 
@@ -82,7 +83,7 @@ class Player(Shuttle):
         self.mask = pygame.mask.from_surface(self.shuttle_image)
         self.max_health = health
 
-    def fire_lasers(self, velocity, objs):
+    def fire_lasers(self, velocity, objs, score):
         self.rest_time()
         for laser in self.lasers:
             laser.move(velocity)
@@ -94,6 +95,7 @@ class Player(Shuttle):
                         collision_sound = mixer.Sound(r"sounds\explosion.wav")
                         collision_sound.play()
                         objs.remove(obj)
+                        score.update()
                         if laser in self.lasers:
                             self.lasers.remove(laser)
 
@@ -145,6 +147,27 @@ class Enemy(Shuttle):
             laser = Laser(self.posx - 20, self.posy, self.laser_image)
             self.lasers.append(laser)
             self.rest_timer = 1
+
+class Score():
+    def __init__(self):
+        self.score = 0
+        self.high_scores = []
+
+    def update(self): #Ten points per ship destroyed 
+        self.score += 10
+
+    def wave_score_update(self): #One hundred points per wave cleared
+        self.score += 100
+
+    def top_3_high_score(self): #Still needs to be added
+        return self.high_scores.sort(reverse=True)
+
+    def update_high_scores(self): #Still needs to be added
+        self.high_scores.sort()
+        if self.score > self.high_scores[0]:
+            del self.high_scores[0]
+            self.high_scores.append(self.score)
+        return self.high_scores
 
 def object_collision(obj1, obj2):
     offset_x = obj2.posx - obj1.posx

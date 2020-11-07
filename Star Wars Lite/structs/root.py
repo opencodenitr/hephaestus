@@ -10,11 +10,13 @@ sys.path.append(os.getcwd())
 from structs import sprites
 from structs import elements
 
-
 def game():
     run = True
     FPS = 60
     wave, lives = 0, 5
+    score = elements.Score()
+    if score.score != 0:
+        score.score = 0
     main_font = pygame.font.Font(r"fonts\Starjedi.ttf", 30)
     deaths_font = pygame.font.Font(r"fonts\Starjedi.ttf", 30)
 
@@ -34,11 +36,13 @@ def game():
         sprites.WINDOW.blit(sprites.BACKGROUND, (0, 0))
         lives_label = main_font.render(f"Lives: {lives}", 1, (255, 255, 0))
         wave_label = main_font.render(f"wave: {wave}", 1, (255, 255, 0))
-
+        score_label = main_font.render(f"Score: {score.score}", 1, (255, 255, 0))
+        
         sprites.WINDOW.blit(lives_label, (10, 10))
         sprites.WINDOW.blit(
             wave_label, (sprites.WIDTH - wave_label.get_width() - 10, 10)
         )
+        sprites.WINDOW.blit(score_label, (290, 10))
 
         for enemy in enemies:
             enemy.draw(sprites.WINDOW)
@@ -53,6 +57,7 @@ def game():
             sprites.WINDOW.blit(
                 deaths_label, (sprites.WIDTH / 2 - deaths_label.get_width() / 2, 350)
             )
+            
 
         pygame.display.update()
 
@@ -71,6 +76,8 @@ def game():
                 continue
 
         if len(enemies) == 0:
+            if wave != 0:
+                score.wave_score_update()
             wave += 1
             wave_length += 5
             for _ in range(wave_length):
@@ -125,7 +132,7 @@ def game():
                 lives -= 1
                 enemies.remove(enemy)
 
-        player.fire_lasers(-laser_velocity, enemies)
+        player.fire_lasers(-laser_velocity, enemies, score)
 
 
 def options():

@@ -31,6 +31,7 @@ Your appreciation makes us grow and glow up. ⭐
 
 This repository will contain small automation/crazy/fun projects made using Python Programming Language. At present, the projects contained in this repository are:
   1. [Star Wars Lite](https://github.com/opencodenitr/hephaestus/tree/main/Star%20Wars%20Lite)
+  2. [Grumpy](https://github.com/007vedant/hephaestus/tree/main/Grumpy)
 
 
 

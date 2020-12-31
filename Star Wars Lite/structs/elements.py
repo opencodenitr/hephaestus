@@ -151,7 +151,7 @@ class Enemy(Shuttle):
 class Score():
     def __init__(self):
         self.score = 0
-        self.high_scores = []
+        self.high_scores = [int(line.rstrip("\n")) for line in open("leaderboard.txt")]
 
     def update(self): #Ten points per ship destroyed 
         self.score += 10
@@ -167,6 +167,8 @@ class Score():
         if self.score > self.high_scores[0]:
             del self.high_scores[0]
             self.high_scores.append(self.score)
+        with open("leaderboard.txt", "w") as leaderboard:
+            leaderboard.writelines("%s\n" % high_score for high_score in self.high_scores)
         return self.high_scores
 
 def object_collision(obj1, obj2):

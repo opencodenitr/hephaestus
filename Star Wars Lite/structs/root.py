@@ -71,6 +71,7 @@ def game():
 
         if deaths:
             if deaths_count > FPS * 3:
+                score.update_high_scores()
                 run = False
             else:
                 continue

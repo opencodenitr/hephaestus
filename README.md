@@ -24,7 +24,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#contribution-guidlines">Contribution guidlines</a></li>
+        <li><a href="#contribution-guidlines">Contribution guidelines</a></li>
         <li><a href="#running-the-project">Running the project</a></li>
       </ul>
     </li>
@@ -39,11 +39,14 @@
 This repository will contain small automation/crazy/fun projects made using Python Programming Language. At present, the projects contained in this repository are:
   1. [Star Wars Lite](https://github.com/opencodenitr/hephaestus/tree/main/Star%20Wars%20Lite)
   2. [Grumpy](https://github.com/007vedant/hephaestus/tree/main/Grumpy)
+
+
+This repository is primarily maintained by [@007vedant](https://github.com/007vedant) and [@opencodenitr](https://github.com/opencodenitr) org.
  
 
 ## Getting Started
 
-To setup the project locally the steps below.
+To make the contributions to the projects find the steps below.
 
 ### Prerequisites
 
@@ -53,7 +56,7 @@ To setup the project locally the steps below.
 
 - [Git](https://git-scm.com/doc)
 
-### Contribution guidlines 🎃
+### Contribution guidelines 🎃
 
 ---
 
@@ -88,7 +91,7 @@ NOTE 2: Please abide by the [Code of Conduct](https://github.com/007vedant/hepha
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 
 ## Starware
 
@@ -98,11 +101,13 @@ Your appreciation makes us grow and glow up. ⭐
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people 🥇
 
-<!-- <a href = "https://github.com/opencodenitr/hephaestus/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo = opencodenitr/hephaestus"/>
-</a> -->
+<a href="https://github.com/opencodenitr/hephaestus/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=opencodenitr/hephaestus" />
+</a>
+
+Made with [contributors-img](https://contrib.rocks).
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->

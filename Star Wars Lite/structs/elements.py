@@ -92,7 +92,7 @@ class Player(Shuttle):
             else:
                 for obj in objs:
                     if laser.collision(obj):
-                        collision_sound = mixer.Sound(r"sounds\explosion.wav")
+                        collision_sound = mixer.Sound(r"Star Wars Lite/sounds/explosion.wav")
                         collision_sound.play()
                         objs.remove(obj)
                         score.update()
@@ -151,7 +151,7 @@ class Enemy(Shuttle):
 class Score():
     def __init__(self):
         self.score = 0
-        self.high_scores = [int(line.rstrip("\n")) for line in open("leaderboard.txt")]
+        self.high_scores = [int(line.rstrip("\n")) for line in open("Star Wars Lite/leaderboard.txt")]
 
     def update(self): #Ten points per ship destroyed 
         self.score += 10

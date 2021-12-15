@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "shinozaki1595",
+      "name": "shinozaki1595",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56308301?v=4",
+      "profile": "https://github.com/shinozaki1595",
+      "contributions": [
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "hephaestus",
+  "projectOwner": "opencodenitr",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

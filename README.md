@@ -1,4 +1,7 @@
 [![Starware](https://img.shields.io/badge/Starware-⭐-black?labelColor=f9b00d)](https://github.com/zepfietje/starware)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
@@ -102,6 +105,19 @@ Your appreciation makes us grow and glow up. ⭐
 ## Contributors ✨
 
 Thanks goes to these wonderful people 🥇
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/shinozaki1595"><img src="https://avatars.githubusercontent.com/u/56308301?v=4?s=100" width="100px;" alt=""/><br /><sub><b>shinozaki1595</b></sub></a><br /><a href="#design-shinozaki1595" title="Design">🎨</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 <a href="https://github.com/opencodenitr/hephaestus/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=opencodenitr/hephaestus" />

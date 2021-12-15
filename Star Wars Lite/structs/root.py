@@ -17,8 +17,8 @@ def game():
     score = elements.Score()
     if score.score != 0:
         score.score = 0
-    main_font = pygame.font.Font(r"fonts\Starjedi.ttf", 30)
-    deaths_font = pygame.font.Font(r"fonts\Starjedi.ttf", 30)
+    main_font = pygame.font.Font(r"Star Wars Lite\fonts\Starjedi.ttf", 30)
+    deaths_font = pygame.font.Font(r"Star Wars Lite\fonts\Starjedi.ttf", 30)
 
     enemies = []
     wave_length = 5
@@ -68,10 +68,11 @@ def game():
         if lives <= 0 or player.health <= 0:
             deaths = True
             deaths_count += 1
+            score.update_high_scores()
+
 
         if deaths:
             if deaths_count > FPS * 3:
-                score.update_high_scores()
                 run = False
             else:
                 continue
@@ -110,13 +111,13 @@ def game():
         ):  # down
             player.posy += player_velocity
         if keys[pygame.K_SPACE]:
-            player_laser_sound = mixer.Sound(r"sounds\player_laser.wav")
+            player_laser_sound = mixer.Sound(r"Star Wars Lite/sounds/player_laser.wav")
             player_laser_sound.play()
             player.shoot()
         if keys[pygame.K_ESCAPE]:
             main.game_menu()
 
-        collision_sound = mixer.Sound(r"sounds\explosion.wav")
+        collision_sound = mixer.Sound(r"Star Wars Lite/sounds/explosion.wav")
 
         for enemy in enemies[:]:
             enemy.move(enemy_velocity)
@@ -137,8 +138,8 @@ def game():
 
 
 def options():
-    title_font = pygame.font.Font(r"fonts\Starjedi.ttf", 60)
-    menu_font = pygame.font.Font(r"fonts\Starjedi.ttf", 40)
+    title_font = pygame.font.Font(r"Star Wars Lite/fonts/Starjedi.ttf", 60)
+    menu_font = pygame.font.Font(r"Star Wars Lite/fonts/Starjedi.ttf", 40)
     run = True
 
     while run:
@@ -162,9 +163,46 @@ def options():
 
         sprites.WINDOW.blit(title_text, (sprites.WIDTH / 2 - title_text.get_width() / 2, 30))
 
-        sound_on_btn = elements.button('assets\menu\sound-on-active.png', 'assets\menu\sound-on-inactive.png', 250, "soundon")
-        sound_off_btn = elements.button('assets\menu\sound-off-active.png', 'assets\menu\sound-off-inactive.png', 310,"soundoff")
-        back_btn = elements.button(r'assets\menu\back-active.png', r'assets\menu\back-inactive.png', 485,"back")
+        sound_on_btn = elements.button('Star Wars Lite/assets\menu\sound-on-active.png', 'Star Wars Lite/assets\menu\sound-on-inactive.png', 250, "soundon")
+        sound_off_btn = elements.button('Star Wars Lite/assets\menu\sound-off-active.png', 'Star Wars Lite/assets\menu\sound-off-inactive.png', 310,"soundoff")
+        back_btn = elements.button(r'Star Wars Lite/assets\menu\back-active.png', r'Star Wars Lite/assets\menu\back-inactive.png', 485,"back")
+
+        pygame.display.update()
+        pygame.time.Clock().tick(60)
+
+    pygame.quit()
+
+
+def high_score():
+    print("not working")
+    title_font = pygame.font.Font(r"Star Wars Lite/fonts/Starjedi.ttf", 60)
+    menu_font = pygame.font.Font(r"Star Wars Lite/fonts/Starjedi.ttf", 40)
+    run = True
+
+    while run:
+        sprites.WINDOW.blit(sprites.BACKGROUND, (0, 0))
+        # draw text on a new surface, 'text', antialias, color, background
+        title_text = title_font.render("options", 1, (255, 255, 0))
+
+        menu_text = menu_font.render("toggle sound", 1, (255, 255, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        sprites.WINDOW.blit(title_text, (sprites.WIDTH / 2 - title_text.get_width() / 2, 30))
+
+        sound_on_btn = elements.button('Star Wars Lite/assets\menu\sound-on-active.png', 'Star Wars Lite/assets\menu\sound-on-inactive.png', 250, "soundon")
+        sound_off_btn = elements.button('Star Wars Lite/assets\menu\sound-off-active.png', 'Star Wars Lite/assets\menu\sound-off-inactive.png', 310,"soundoff")
+        back_btn = elements.button(r'Star Wars Lite/assets\menu\back-active.png', r'Star Wars Lite/assets\menu\back-inactive.png', 485,"back")
 
         pygame.display.update()
         pygame.time.Clock().tick(60)

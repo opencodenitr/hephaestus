@@ -13,24 +13,25 @@ pygame.init()
 mixer.init()
 pygame.display.set_caption("Star Wars Lite")
 
-mixer.music.load(r"sounds\main_music.mp3")
+mixer.music.load(r"Star Wars Lite\sounds\main_music.mp3")
 mixer.music.play(-1)
 
 def game_menu():
 
-    title_font = pygame.font.Font(r"fonts\Starjedi.ttf", 60)
-    menu_font = pygame.font.Font(r"fonts\Starjedi.ttf", 40)
+    title_font = pygame.font.Font(r"Star Wars Lite\fonts\Starjedi.ttf", 60)
+    menu_font = pygame.font.Font(r"Star Wars Lite\fonts\Starjedi.ttf", 40)
 
     run = True
     while run:
-        
+
         sprites.WINDOW.blit(sprites.BACKGROUND, (0, 0))
         title_text = title_font.render("Star Wars Lite", 1, (255, 255, 0))
 
-        play_btn = elements.button('assets\menu\play-active.png', 'assets\menu\play-inactive.png', 295,"play")
-        options_btn = elements.button('assets\menu\options-active.png', 'assets\menu\options-inactive.png', 355,"options")
-        exit_btn = elements.button('assets\menu\exit-active.png', 'assets\menu\exit-inactive.png', 415,"exit")
-        
+        play_btn = elements.button('Star Wars Lite\\assets\menu\play-active.png', 'Star Wars Lite\\assets\menu\play-inactive.png', 295,"play")
+        options_btn = elements.button('Star Wars Lite\\assets\menu\options-active.png', 'Star Wars Lite\\assets\menu\options-inactive.png', 355,"options")
+        exit_btn = elements.button('Star Wars Lite\\assets\menu\exit-active.png', 'Star Wars Lite\\assets\menu\exit-inactive.png', 415,"exit")
+        high_score_btn = elements.button('Star Wars Lite\\assets\menu\high-scores-active.png', 'Star Wars Lite\\assets\menu\high-scores-inactive.png', 530,"high_score")
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

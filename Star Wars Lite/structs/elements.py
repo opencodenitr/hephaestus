@@ -92,7 +92,7 @@ class Player(Shuttle):
             else:
                 for obj in objs:
                     if laser.collision(obj):
-                        collision_sound = mixer.Sound(r"sounds\explosion.wav")
+                        collision_sound = mixer.Sound(r"Star Wars Lite/sounds/explosion.wav")
                         collision_sound.play()
                         objs.remove(obj)
                         score.update()
@@ -197,6 +197,8 @@ def button(active,inactive,get_top,action=None):
                 quit()
             elif action == 'back':
                 main.game_menu()
+            elif action =="high score":
+                root.high_score()
             elif action == 'soundon':
                 if mixer.music.play(-1) == False:
                     mixer.music.play(-1)

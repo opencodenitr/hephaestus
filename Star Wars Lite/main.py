@@ -23,14 +23,15 @@ def game_menu():
 
     run = True
     while run:
-        
+
         sprites.WINDOW.blit(sprites.BACKGROUND, (0, 0))
         title_text = title_font.render("Star Wars Lite", 1, (255, 255, 0))
 
         play_btn = elements.button('Star Wars Lite\\assets\menu\play-active.png', 'Star Wars Lite\\assets\menu\play-inactive.png', 295,"play")
         options_btn = elements.button('Star Wars Lite\\assets\menu\options-active.png', 'Star Wars Lite\\assets\menu\options-inactive.png', 355,"options")
         exit_btn = elements.button('Star Wars Lite\\assets\menu\exit-active.png', 'Star Wars Lite\\assets\menu\exit-inactive.png', 415,"exit")
-        
+        high_score_btn = elements.button('Star Wars Lite\\assets\menu\high-scores-active.png', 'Star Wars Lite\\assets\menu\high-scores-inactive.png', 530,"high_score")
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

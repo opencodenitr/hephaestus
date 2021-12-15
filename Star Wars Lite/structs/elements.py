@@ -151,7 +151,7 @@ class Enemy(Shuttle):
 class Score():
     def __init__(self):
         self.score = 0
-        self.high_scores = [int(line.rstrip("\n")) for line in open("Star Wars Lite/leaderboard.txt")]
+        self.high_scores = [int(line.rstrip("\n")) for line in open("leaderboard.txt")]
 
     def update(self): #Ten points per ship destroyed 
         self.score += 10
@@ -197,6 +197,8 @@ def button(active,inactive,get_top,action=None):
                 quit()
             elif action == 'back':
                 main.game_menu()
+            elif action =="high score":
+                root.high_score()
             elif action == 'soundon':
                 if mixer.music.play(-1) == False:
                     mixer.music.play(-1)
